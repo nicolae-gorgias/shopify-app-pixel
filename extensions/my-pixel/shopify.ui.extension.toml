@@ -1,6 +1,11 @@
 type = "web_pixel_extension"
-name = "pixel"
+name = "my-pixel"
 runtime_context = "strict"
 
 [settings]
 type = "object"
+
+[settings.fields.accountID]
+name = "Account ID"
+description = "Account ID"
+type = "single_line_text_field"
