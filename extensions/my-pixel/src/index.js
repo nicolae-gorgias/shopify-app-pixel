@@ -8,7 +8,7 @@ register(async ({analytics, browser}) => {
     console.log("PIXEL v3: CHECK window.ff", typeof ff);
 
     // test sending beacon - does not work, blocked by AdBlock
-    browser.sendBeacon('https://events-mgk72y5fqq-uc.a.run.app', JSON.stringify({
+    browser.sendBeacon('https://events-mgk72y5fqq-uc.a.run.app?beacon', JSON.stringify({
       "accountId": 1,
       "eventType": "campaign-link-clicked",
       "campaignId": "cmp1"
@@ -26,5 +26,22 @@ register(async ({analytics, browser}) => {
       data: event.data,
     }))
     // execute localStorage.getItem('gorgias.communication-channel') in console to see the result
+
+    // test sending fetch request - works
+    fetch('https://events-mgk72y5fqq-uc.a.run.app?fetch', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "accountId": 1,
+          "eventType": "campaign-link-clicked",
+          "campaignId": "cmp1"
+        })
+    })
+       .then(response => response.json())
+       .then(response => console.log(JSON.stringify(response)))
+
   });
 });
