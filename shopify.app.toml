@@ -1,0 +1,4 @@
+name = "My new app"
+scopes = "write_pixels,read_customer_events"
+extension_directories = ["extensions/*"]
+web_directories = []

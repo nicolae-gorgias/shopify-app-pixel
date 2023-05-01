@@ -1,0 +1,6 @@
+type = "web_pixel_extension"
+name = "pixel"
+runtime_context = "strict"
+
+[settings]
+type = "object"
